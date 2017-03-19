@@ -28,7 +28,7 @@ find = findFold (\paths fp -> return $ paths ++ [fp]) []
 findWhen :: (FilePath -> Sh Bool) -> FilePath -> Sh [FilePath]
 findWhen = findDirFilterWhen (const $ return True)
 
--- | Fold an arbitrary folding function over files froma a 'find'.
+-- | Fold an arbitrary folding function over files from a 'find'.
 -- Like 'findWhen' but use a more general fold rather than a filter.
 findFold :: (a -> FilePath -> Sh a) -> a -> FilePath -> Sh a
 findFold folder startValue = findFoldDirFilter folder startValue (const $ return True)
